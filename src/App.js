@@ -1,18 +1,14 @@
 import { Component } from 'react';
 import './App.css';
+import Navbar from './components/layout/Navbar';
 
 export class App extends Component {
 	render() {
 		return (
 			<div className='App'>
+				<Navbar title='Github Finder' icon='fab fa-github' />
+				{/* <Navbar title='Github Finder' icon='fab fa-github' /> */}
 				<h2>Github Finder</h2>
-				<a
-					className='App-link'
-					href='https://reactjs.org'
-					target='_blank'
-					rel='noopener noreferrer'>
-					Learn React
-				</a>
 			</div>
 		);
 	}
