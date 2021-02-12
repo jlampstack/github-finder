@@ -1,16 +1,9 @@
 import React, { Component } from 'react';
 
 class User extends Component {
-	state = {
-		id: 'id',
-		login: 'mojombo',
-		avatar_url: 'https://avatars.githubusercontent.com/u/1?v=4',
-		html_url: 'https://github.com/mojombo',
-	};
-
-	render() {
-		const { login, avatar_url, html_url } = this.state;
-		console.log(this.state);
+	render(props) {
+		// this.props.user points to user in Users.js
+		const { login, avatar_url, html_url } = this.props.user;
 		return (
 			<div className='card text-center'>
 				<img
