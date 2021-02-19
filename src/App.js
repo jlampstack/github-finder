@@ -2,6 +2,7 @@ import { Component } from 'react';
 import Navbar from './components/layout/Navbar';
 import Users from './components/users/Users';
 import Search from './components/users/Search';
+import Alert from './components/layout/Alert';
 import axios from 'axios';
 import './App.css';
 
@@ -10,6 +11,7 @@ class App extends Component {
 		users: [],
 		loading: false,
 		showClear: false,
+		alert: null,
 	};
 
 	// Search Github users
@@ -30,8 +32,16 @@ class App extends Component {
 	};
 
 	// Clear users from state
-	showClear = () => {
-		// console.log(this.state);
+	// showClear = () => {
+	// 	// console.log(this.state);
+	// };
+
+	setAlert = (msg, type) => {
+		// Show alert msg
+		this.setState({ alert: { msg, type } });
+
+		// Then make dissappear
+		setTimeout(() => this.setState({ alert: null }), 2000);
 	};
 
 	render() {
@@ -41,10 +51,12 @@ class App extends Component {
 			<div className='App'>
 				<Navbar title='Github Finder' icon='fab fa-github' />
 				<div className='container'>
+					<Alert alert={this.state.alert} />
 					<Search
 						searchUsers={this.searchUsers}
 						clearUsers={this.clearUsers}
 						showClear={users.length > 0 ? true : false}
+						setAlert={this.setAlert}
 					/>
 					<Users loading={loading} users={users} />
 				</div>
